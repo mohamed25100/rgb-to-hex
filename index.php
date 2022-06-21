@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RGB To Hex</title>
 </head>
 <body>
     <?php
+    //update if rgb > 255 
     function n(){//array of 16 index we'll need it later
         $a = [1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F',0];
         return $a;
@@ -16,6 +17,9 @@
         $sixteen = 16;
         $red2 = n()[($a%16)-1];
       
+        if($a > 255){
+            return n()[14] . n()[14];
+        }
         if ($a < 160){
           if($a < 16*10 && $a >= 16*9){
             return ($red2 !== null) ? 9 . $red2 : (($red2 == null)? 9 . 0 : false);
@@ -95,7 +99,9 @@
       function green($a){
         $sixteen = 16;
         $green2 = n()[($a%16)-1];
-      
+        if($a > 255){
+            return n()[14] . n()[14];
+        }
         if ($a < 160){
           if($a < 16*10 && $a >= 16*9){
             return ($green2 !== null) ? 9 . $green2 : (($green2 == null)? 9 . 0 : false);
@@ -211,6 +217,9 @@
             return 0 . 0;
           }
         }else{
+            if($a > 255){
+                return n()[14] . n()[14];
+            }
             //check if our number is integer after /16
           if (n()[($a%16)] === 1){
             if ($a == 160){
@@ -248,16 +257,18 @@
           if ($a < 16*15 && $a > 16*14){
             return n()[13] . $blue2;
           }
-          if ($a < 16*16 && $a > 16*15){
+          if ($a < 16*16){
             return n()[14] . $blue2;
           }
         }
       }
       function rgb($r,$g,$b):string{//resultat red && green && blue
-        $result = red($r).green($g).blue($b);
-        return $result;
+        $result = [];
+        array_push($result, red($r),green($g),blue($b));
+        return join($result);
       }
-      echo rgb(255,127,0);//my best color :)
+      echo rgb('20'.'06'.'00',127,0);//my best color :)
     ?>
+    &copy;Mohamed BOUCHERBA ^_^
 </body>
 </html>
