@@ -267,15 +267,9 @@
         array_push($result, red($r),green($g),blue($b));
         return join($result);
       }
-      echo "<h1 id='randomRGB'>".rgb(rand(1,255),rand(1,255),rand(1,255))."</h1>" ;//my best color :)
+      echo rgb('20'.'06'.'00',127,0);//my best color :)
     ?>
     &copy;Mohamed BOUCHERBA ^_^
-    <a href="/base/index.php"><button>base</button></a>
-    <button onclick="randomColor()">Random Color</button>
-    <button onclick="refreshPage()">Refresh Page</button>
-
-
-<script src="/app.js"></script>
+    <a href="/"><button>home</button></a>
 </body>
-
 </html>
